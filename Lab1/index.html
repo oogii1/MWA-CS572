@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MWA - Lab 1</title>
+</head>
+
+<body>
+    <section>
+        <h1>Exercise 1</h1>
+        <ul>
+            <li data-time="5:17">ECMA6 Video</li>
+            <li data-time="8:22">Node Video</li>
+            <li data-time="3:34">Node Video</li>
+            <li data-time="4:29">ECMA6 Video</li>
+        </ul>
+    </section>
+    <section>
+        <h1>Exercise 4 - BMI Calculator</h1>
+        <label>
+            <input type="radio" name="unit" value="english" checked="checked" />English</label>
+        <br />
+        <input type="number" name="height" placeholder="Enter your height" />
+        <br />
+        <input type="number" name="weight" placeholder="Enter your weight" />
+        <br />
+        <button id="calculateBMI">Calculate</button>
+        <div id="BMIoutput"></div>
+    </section>
+    <script>
+
+        (function exercise1() {
+            const items = Array.from(document.querySelectorAll('[data-time]'));
+            const totalTime = items.filter(x => /^ECMA6/g.test(x.innerHTML))
+                .map(x => x.getAttribute('data-time'))
+                .map(x => x.substr(0, 1) * 60 + parseInt(x.substr(2, 2)))
+                .reduce((s, x) => s += x, 0);
+            console.log(totalTime);
+        }());
+
+        (function exercise2() {
+            var library = [
+                { prof: 'Asaad Saad', course: 'WAP', courseID: 'CS452' },
+                { prof: 'Rakesh Shrestha', course: 'WAA', courseID: 'CS545' },
+                { prof: 'Steve Nolle', course: 'SWE', courseID: 'CS425' },
+            ];
+            library.sort((x, y) => x.course > y.course ? 1 : 0);
+            console.log(library);
+        }());
+
+        (function exercise3() {
+            const numbers = [3, 62, 234, 7, 23, 74, 23, 76, 92];
+            const greaterThen70s = numbers.filter(x => x > 70);
+            console.log(greaterThen70s);
+        }());
+
+        (function exercise4() {
+            class BMICalculator {
+                constructor(h, w) {
+                    this._height = h;
+                    this._weight = w;
+                }
+                calculate() {
+                    return this._weight / (this._height * this._height) * 703;
+                }
+            }
+            const showOutput = function (str) {
+                document.getElementById("BMIoutput").innerHTML = str;
+            }
+            document.getElementById("calculateBMI").onclick = function () {
+                var h = parseFloat(document.getElementsByName("height")[0].value);
+                var w = parseFloat(document.getElementsByName("weight")[0].value);
+                if (!h || !w || h <= 0 || w <= 0) {
+                    showOutput("Invalid value(s)");
+                    return;
+                }
+                const bmiCalculator = new BMICalculator(h, w);
+                showOutput(bmiCalculator.calculate());
+            };
+        }());
+
+        (function exercise5() {
+            const Person = function (name) {
+                this.name = name;
+            };
+            Person.prototype.teach = function (subject) {
+                console.log(`${this.name} is now teaching ${subject}`);
+            };
+            const TeacherA = new Person("TeacherA");
+            const TeacherB = new Person("TeacherB");
+            TeacherA.teach("courseA");
+            TeacherB.teach("courseB");
+        }());
+
+        (function exercise6() {
+            String.prototype.filter = function (bannedWords) {
+                var re = new RegExp(bannedWords.join('|'), "g");
+                return this.replace(re, "***");
+            };
+            console.log("This house is nice!".filter(['house', 'nice']));
+        }());
+
+        (function exercise7() {
+            Array.prototype.bubbleSort = function () {
+                for (let i = 0 ; i < this.length; i++) {
+                    for (let j = 0; j < this.length - i - 1; j++) {
+                        if(this[j] > this[j + 1])
+                        [this[j], this[j + 1]] = [this[j + 1], this[j]];
+                    }
+                }
+                return this;
+            };
+            console.log([6, 4, 0, 3, -2, 1].bubbleSort());
+        }());
+
+    </script>
+</body>
+
+</html>
