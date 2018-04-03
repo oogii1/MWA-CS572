@@ -1,11 +1,11 @@
 function slow(callback) {
-    // for (let i = 0; i <= 5e8; i++) { }
-    setTimeout(function(){
+    setImmediate(function () {
+        for (let i = 0; i <= 5e8; i++) { }
         if (Math.random() > 0.5) {
             return callback("Error", null);
         }
         callback(null, { id: 12345 });
-    }, 1000);
+    });
 }
 
 function exec(fn) {
