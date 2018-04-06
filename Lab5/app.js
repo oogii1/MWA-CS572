@@ -27,5 +27,27 @@ app.get('/users', function (req, res) {
     };
     sendReq(subject);
 });
+app.get('/users1', function (req, res) {
+    fetch('http://jsonplaceholder.typicode.com/users/')
+        .then(res => res.json())
+        .then(users => res.render('users', { title: 'USERS1 - list', users: users }));
+});
+app.get('/users2', function (req, res) {
+    const ob = Rx.Observable.fromPromise(fetch('http://jsonplaceholder.typicode.com/users/').then(res => res.json()));
+    ob.subscribe(users => res.render('users', { title: 'USERS1 - list', users: users }));
+});
+app.get('/users3', function (req, res) {
+
+    let my = new Promise((r, e) => {
+        setTimeout(() => r("====RRRRRRR===="), 2000);
+    });
+    Rx.Observable.fromPromise(my).subscribe(a => console.log(a), a => { console.log('EEERRRROOOORRR');console.log(a) });
+
+    const ob = Rx.Observable.fromPromise(fetch('http://jsonplaceholder.typicode.com/users/'));
+    ob.subscribe(response => {
+
+        res.render('users', { title: 'USERS1 - list', users: [] });
+    });
+});
 
 app.listen(app.get('port1'), () => { console.log(`Listening ${app.get('port1')}`) });
