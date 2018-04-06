@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Your Website</title>
+    <script src="https://unpkg.com/@reactivex/rxjs@6.0.0-alpha.0/dist/global/Rx.js"></script>
+
+</head>
+
+<body>
+
+    <button>Click me</button>
+    <div></div>
+
+    <script>
+
+        var clickEmitted = new Rx.BehaviorSubject('Not clicked'); 
+        var button = document.querySelector('button'); 
+        var div = document.querySelector('div'); 
+
+        button.addEventListener('click', () => clickEmitted.next('Clicked!')); 
+
+        clickEmitted.subscribe((value) => div.textContent = value);
+
+
+        /*
+            BehaviorSubject, which has a notion of "the current value". It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately receive the "current value" from the BehaviorSubject.
+        */
+        // var subject = new Rx.BehaviorSubject(0); // 0 is the initial value
+
+        // subject.subscribe({
+        //     next: (v) => console.log('observerA: ' + v)
+        // });
+
+        // subject.next(1);
+        // subject.next(2);
+
+        // subject.subscribe({
+        //     next: (v) => console.log('observerB: ' + v)
+        // });
+
+        // subject.next(3);
+
+    </script>
+</body>
+
+</html>

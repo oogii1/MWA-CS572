@@ -1,0 +1,18 @@
+{
+  "name": "lesson03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "momentdemo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rujuan Xing",
+  "license": "ISC",
+  "dependencies": {
+    "@reactivex/rxjs": "^5.5.6",
+    "axios": "^0.18.0",
+    "jasmine-node": "^1.14.5",
+    "moment": "^2.21.0",
+    "node-fetch": "^2.1.1"
+  }
+}

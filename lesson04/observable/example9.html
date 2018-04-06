@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Your Website</title>
+    <script src="https://unpkg.com/@reactivex/rxjs@6.0.0-alpha.0/dist/global/Rx.js"></script>
+    
+</head>
+
+<body>
+
+<input type="text" />
+
+<script>
+
+       var input = Rx.Observable.fromEvent(document.querySelector('input'), 'input'); 
+// Only let through an event every 200 ms 
+input.throttleTime(200) 
+	.map(event => event.target.value) 
+	.subscribe(value => console.log(`throttleTime: ${value}`)); 
+
+// Discard emitted values that take less than the specified time between output 
+input.debounceTime(200) 
+	.map(event => event.target.value) 
+	.subscribe(value => console.log(`DebounceTime" ${value} `)); 
+
+// Stop the stream of events after 3 events 
+input.take(3) 
+	.map(event => event.target.value) 
+	.subscribe(value => console.log(`Take: ${value}`)); 
+
+
+
+    </script>
+</body>
+
+</html>
