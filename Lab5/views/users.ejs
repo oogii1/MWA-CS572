@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%=title %>
+    </title>
+</head>
+
+<body>
+    <div>
+        <table border="1">
+            <tr>
+                <td>id</td>
+                <td>Name</td>
+                <td>Username</td>
+                <td>Email</td>
+                <td>City</td>
+                <td>Zip code</td>
+                <td>Latitude</td>
+                <td>Longitude</td>
+                <td>Website</td>
+            </tr>
+            <% for(const user of users){ %>
+                <tr>
+                    <td>
+                        <%= user.id%>
+                    </td>
+                    <td>
+                        <%= user.name%>
+                    </td>
+                    <td>
+                        <%= user.username%>
+                    </td>
+                    <td>
+                        <%= user.email%>
+                    </td>
+                    <td>
+                        <%= user.address.city%>
+                    </td>
+                    <td>
+                        <%= user.address.zipcode%>
+                    </td>
+                    <td>
+                        <%= user.address.geo.lat%>
+                    </td>
+                    <td>
+                        <%= user.address.geo.lng%>
+                    </td>
+                    <td>
+                        <%= user.website%>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+    <p>
+        <a href="/">Go to index</a>
+    </p>
+</body>
+
+</html>
