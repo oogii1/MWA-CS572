@@ -1,1 +1,3 @@
-node start
+A start command is:
+------------------------
+> node start
