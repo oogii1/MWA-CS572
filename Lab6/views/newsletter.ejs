@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%= title%>
+    </title>
+</head>
+
+<body>
+    <form method="POST">
+        <label for='email'>Email:</label>
+        <input type="text" id='email' name="email" value="<%=(typeof email != 'undefined'?email:'')%>" />
+        <input type="hidden" name="_csrf" value="<%=csrf%>" />
+        <button>Submit</button>
+    </form>
+    <% if(typeof errors != 'undefined') { %>
+        <div>
+            <%=JSON.stringify(errors)%>
+        </div>
+        <% } %>
+</body>
+
+</html>
