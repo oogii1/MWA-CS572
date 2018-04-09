@@ -1,0 +1,16 @@
+{
+  "name": "lesson07",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rujuan Xing",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.0.4",
+    "mongoskin": "^2.1.0"
+  }
+}
