@@ -19,4 +19,4 @@
 
 4. Display the least populated city in each state
 
-> db.zips.aggregate([{$group:{_id:{state:'$state', city:'$city'}, pop: {$sum:'$pop'}}}, {$sort:{pop:1}}, {$group: {_id: '$_id.state', city:{$first:'$_id.city'}}}, {$project:{_id:0, state: '$_id', leastPopulatedCity: '$city'}}])
+> db.zips.aggregate([{$group:{_id:{state:'$state', city:'$city'}, pop: {$sum:'$pop'}}}, {$sort:{pop:1, '_id.state':1, '_id.city':1}}, {$group: {_id: '$_id.state', city:{$first:'$_id.city'}, pop: {$first: '$pop'}}}, {$project:{_id:0, state: '$_id', leastPopulatedCity: '$city', pop: '$pop'}}, {$sort: {state:1}}])
