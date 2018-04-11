@@ -1,6 +1,6 @@
 #Import
 -------------------------------
-> mongoimport -d lab9 -c zips --file ./zips.json
+> mongoimport -d lab9 -c zips --file .\zips.json\
 > use lab9
 
 #Tasks
