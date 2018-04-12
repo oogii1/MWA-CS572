@@ -17,3 +17,5 @@ Array operators
 Update $set, multi: true
 Aggregate -match, project, group, sort, sum
 Index
+
+Replica & Sharding on Multichoice
