@@ -1,0 +1,19 @@
+10 node 
+10 mongo TUE, WEB
+1 week monday no question & mongoose
+
+Cross Origin
+What is Event Loop, Queues, 
+Modules CommonJS
+exports VS modules.exports
+class a extends EventEmmitter()
+Buffer & Stream
+Files
+Promise
+Async & Await
+Scalability of NODE Slide 63 - Lesson 04
+#Mongo
+Array operators
+Update $set, multi: true
+Aggregate -match, project, group, sort, sum
+Index
