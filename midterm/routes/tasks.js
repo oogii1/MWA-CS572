@@ -3,15 +3,18 @@ const router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
 
 router.get('/', function (req, res, next) {
-    req.db.collection('tasks').find({ status: 'incomplete' }).toArray(function (err, data) {
+    req.db.collection('tasks').find({ status: { $eq: 'incomplete' } }).toArray(function (err, data) {
         if (err) return next(err);
         // res.render('tasks');
         res.json(data);
+        // with each
+        // if(data == null) res.end();
+        // res.write(JSON.stringify(data));
     });
 });
 
 router.get('/completed', function (req, res, next) {
-    req.db.collection('tasks').find({ status: 'complete' }).toArray(function (err, data) {
+    req.db.collection('tasks').find({ status: { $ne: 'incomplete' } }).toArray(function (err, data) {
         if (err) return next(err);
         // res.render('tasks_completed');
         res.json(data);
@@ -45,7 +48,7 @@ router.get('/check/:task_id', function (req, res, next) {
     req.db.collection('tasks').update({
         _id: ObjectID(req.params['task_id'])
     }, {
-            status: 'complete'
+            $set: { status: 'complete' }
         }, function (err, data) {
             console.log(data);
             if (err) return next(err);
