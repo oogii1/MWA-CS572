@@ -71,10 +71,15 @@ var AMyAbstract = /** @class */ (function () {
     };
     return AMyAbstract;
 }());
-function decorator(a) {
-    console.log(a);
+function decorator(a1) {
+    return function (a) {
+        console.log("a: " + a + " a1: " + a1);
+    };
 }
 ;
+function decoratorMethod(target, b, d) {
+    console.log(target + " || " + b + " || " + d);
+}
 var CC = /** @class */ (function (_super) {
     __extends(CC, _super);
     function CC() {
@@ -84,7 +89,7 @@ var CC = /** @class */ (function (_super) {
         console.log("id: " + this.id + " name:" + this.name);
     };
     CC.func = function () {
-        console.log("static func " + this.name);
+        console.log("static func");
     };
     Object.defineProperty(CC.prototype, "momo", {
         get: function () {
@@ -113,8 +118,14 @@ var CC = /** @class */ (function (_super) {
     CC.prototype.bbb = function () {
         console.log('bbbbbb called');
     };
+    __decorate([
+        decoratorMethod
+    ], CC.prototype, "func", null);
+    __decorate([
+        decoratorMethod
+    ], CC, "func", null);
     CC = __decorate([
-        decorator
+        decorator('nice')
     ], CC);
     return CC;
 }(AMyAbstract));
@@ -125,3 +136,40 @@ cc.func();
 CC.func();
 cc.momo1 = function (q, w) { console.log(q + " : " + w); };
 console.log(cc.momo('MOOOMOOO', 2));
+var Tom1 = /** @class */ (function () {
+    function Tom1(hi, what, eeenuumVar) {
+        if (what === void 0) { what = "hoho"; }
+        this.hi = hi;
+        this.what = what;
+        this.eeenuumVar = eeenuumVar;
+        this.myVar = "Huurhun ain:: ==" + (this.myPublicVar && this.myProtectedVar) + "== - this is myPublicVar";
+        this.myProtectedVar = 10;
+        this.myPublicVar = false;
+        this.MyObj = {
+            key1: 'value1',
+            key2: 'value2',
+            key3: 'value3',
+            key4: function () { return console.log('asdasdasd'); },
+            key5: function () {
+                var _this = this;
+                var haha = function () { console.log(this); };
+                this.key1 = "changed value1";
+                var hoho = function () { return console.log(_this); };
+                return 'asd';
+            }
+        };
+        for (var oobj in this.MyObj) {
+            console.log(oobj);
+        }
+    }
+    Tom1.prototype.nowsh = function (aa) {
+        for (var _i = 0, _a = [111, 112, 113, 114, 115]; _i < _a.length; _i++) {
+            var k = _a[_i];
+            console.dir(k);
+        }
+        var a = function (a) { return console.log(a); };
+        a(55);
+        return "";
+    };
+    return Tom1;
+}());

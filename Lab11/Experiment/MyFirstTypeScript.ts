@@ -53,19 +53,29 @@ abstract class AMyAbstract {
     abstract bbb(): void;
 }
 
-function decorator(a: Function) {
-    console.log(a);
+function decorator(a1: string) {
+    return function (a: Function) {
+        console.log(`a: ${a} a1: ${a1}`);
+    };
 };
 
-@decorator
+function decoratorMethod(target: Object, b: string, d: PropertyDescriptor): any {
+    console.log(`${target} || ${b} || ${d}`);
+}
+
+@decorator('nice')
 class CC extends AMyAbstract implements IMyInterface, IMyInterface2 {
     public name: string;
     public id: string;
+
+    @decoratorMethod
     public func(): void {
         console.log(`id: ${this.id} name:${this.name}`);
     }
+    
+    @decoratorMethod
     public static func(): void {
-        console.log(`static func ${this.name}`);
+        console.log(`static func`);
     }
     private _momo: (a: string, b: number) => void;
     get momo() {
