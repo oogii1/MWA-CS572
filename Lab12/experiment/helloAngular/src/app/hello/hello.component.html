@@ -2,8 +2,8 @@
   hello works! {{hoho}} ======================
 </p>
 <div>
-  <input #asd value="{{hoho}}" />
+  <input #asd value="{{hoho}}" (keyup)='0' />
   <ng-content></ng-content>
-  <strong>#ASD: {{asd}}</strong>
+  <strong>#ASD: {{asd.value}}</strong>
 </div>
 <p>===============================</p>

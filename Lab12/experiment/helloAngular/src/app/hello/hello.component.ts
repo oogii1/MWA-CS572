@@ -5,7 +5,7 @@ import { StaticInjector } from '@angular/core/src/di/injector';
   selector: 'app-hello',
   templateUrl: './hello.component.html',
   styleUrls: ['./hello.component.css'],
-  encapsulation: ViewEncapsulation.Native,
+  // encapsulation: ViewEncapsulation.Native,
   inputs: ['name: naamee'],
   outputs: ['oops: outThis']
 })

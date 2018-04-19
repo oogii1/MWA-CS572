@@ -3,15 +3,19 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello/hello.component';
-import { MyDirDirective } from './my-dir.directive';
+import { OneComponent } from './one.component';
+import { UpperDirective } from './upper.directive';
+import { MyvisibilityDirective } from './myvisibility.directive';
+import { MyColorDirective } from './my-color.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent,
-    MyDirDirective
+    OneComponent,
+    UpperDirective,
+    MyvisibilityDirective,
+    MyColorDirective
   ],
   imports: [
     BrowserModule
