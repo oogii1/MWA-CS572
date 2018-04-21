@@ -1,0 +1,33 @@
+<form novalidate #form='ngForm' (ngSubmit)="suuub()">
+  <div>
+    Name:
+    <input type="text" [(ngModel)]="userData.name" #name="ngModel" required name="name" />
+    <div style="color: red;" *ngIf="name.errors && (name.dirty || name.touched)">
+      <p *ngIf="name.errors.required">Give your name. Please!!!</p>
+    </div>
+  </div>
+  <div>
+    Email:
+    <input type="text" [(ngModel)]="userData.email" #email="ngModel" required pattern="^.+@.{2,}\..+$" name="email" />
+    <div style="color: red;" *ngIf="email.errors && (email.dirty || email.touched)">
+      <p *ngIf="email.errors.required">GIIIIIIIIIVE IT. It's required mr/ms</p>
+      <p *ngIf="email.errors.pattern" ngNonBindable>use this {{regex}} .+@.[2,]\..+</p>
+    </div>
+  </div>
+  <div>
+    Post:
+    <textarea [(ngModel)]="ppost" placeholder="type your post here" #post="ngModel" required name="post">
+    </textarea>
+    <div style="color: red;" *ngIf="post.errors && (post.dirty || post.touched)">
+      <p *ngIf="post.errors.required">It's also required. Why didn't you fill it out full?</p>
+    </div>
+  </div>
+  <button>Submit</button>
+  <button type="button" (click)="ggeett()">Get DDAATTAA</button>
+</form>
+<div>
+  <div *ngFor="let post of userPosts">
+    <p>Title: {{post.title}}</p>
+    <p>Body: {{post.body}}</p>
+  </div>
+</div>
